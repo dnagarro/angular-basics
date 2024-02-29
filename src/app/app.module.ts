@@ -8,7 +8,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ToDoItemComponent } from './to-do-item/to-do-item.component';
 import { AddTodoItemComponent } from './add-todo-item/add-todo-item.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,15 @@ import { FormsModule } from '@angular/forms';
     AboutComponent,
     ContactComponent,
     ToDoItemComponent,
-    AddTodoItemComponent
+    AddTodoItemComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

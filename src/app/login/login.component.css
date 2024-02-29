@@ -1,0 +1,19 @@
+.login-form {
+    width: 100%; /* Adjust the width as needed */
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically within each form group */
+    margin-bottom: 15px; /* Add space between form groups */
+  }
+  
+  label {
+    margin-bottom: 5px; /* Add space below labels */
+  }
+  
+  input, button {
+    width: 100%; /* Make inputs and buttons fill the width of their container */
+    padding: 8px; /* Add padding for better appearance */
+    margin-bottom: 10px; /* Add space below input fields and buttons */
+  }
