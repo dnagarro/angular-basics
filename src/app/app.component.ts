@@ -6,7 +6,8 @@ import { NavigationEnd, Router } from '@angular/router';
   selector: 'app-root',
   template: `
   <nav class='navbar navbar-expand navbar-light bg-light'>
-    <a class='navbar-brand'>{{title}}</a>
+    <a class='navbar-brand'>User: {{user}}</a>
+    <br>
     <ul class='nav nav-pills'>
       <li><a class='nav-link' routerLink='/home'>Home</a></li>
       <li><a class='nav-link' routerLink='/about'>About</a></li>
@@ -22,26 +23,21 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'angular-basics';
+  user = 'angular-basics';
+ 
   isLoggedIn: boolean = false;
   constructor(private router: Router, private authService: AuthService) {
 
   }
+
   ngOnInit(): void {
 
     this.authService.getLoginSuccessObservable().subscribe(() => {
-    
       this.isLoggedIn = this.authService.isLoggedIn();
-      console.log(this.isLoggedIn);
     });
 
-    // this.router.events.subscribe(event => {
-    //   if (event instanceof NavigationEnd) {
-    //     const currentUrl = event.url;
-    //     if (currentUrl.includes('/items')) {
-    //       this.authService.redirectUnauthorizeToLoginPage();
-    //     }
-    //   }
-    // });
+    this.authService.getUserDetailsSuccessObservable().subscribe((response) => {
+        this.user = response.username;
+    });
   }
 }

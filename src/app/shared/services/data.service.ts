@@ -10,13 +10,13 @@ export class DataService {
         [
             {
                 "Id": 1,
-                "Details": "details",
-                "Name": "Name"
+                "Details": "To do item details 1",
+                "Name": "To do item name"
             },
             {
                 "Id": 2,
-                "Details": "details2",
-                "Name": "Name2"
+                "Details": "To do item details 2",
+                "Name": "To do item name 2"
             }
         ];
 

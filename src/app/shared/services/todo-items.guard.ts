@@ -19,7 +19,4 @@ export class ToDoItemsGuard implements CanActivate {
             return false;
         }
     }
-
-  
-
 }
