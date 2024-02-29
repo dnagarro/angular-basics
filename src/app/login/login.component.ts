@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm = this.formBuilder.group({
     email: ["", [Validators.required, Validators.email]],
     password: ["", Validators.required],
@@ -16,6 +16,12 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
 
+  }
+  
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/items']);
+    }
   }
 
   onSubmit(): void {

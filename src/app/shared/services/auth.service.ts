@@ -16,7 +16,7 @@ export class AuthService {
     private identityServerUrl = 'https://api.realworld.io/api';
     private token = new Subject<string>();
     private identityUser = new Subject<IdentityUser>();
-    
+
 
     login(username: string, password: string): Observable<{ user: IdentityUser }> {
         const data = {
@@ -34,13 +34,6 @@ export class AuthService {
         return this.getToken() != '';
     }
 
-    // //move this to route guard
-    // redirectUnauthorizeToLoginPage(): void {
-    //     if (!this.isLoggedIn()) {
-    //         this.router.navigate(['/login']);
-    //     }
-    // }
-
     private setUser(): void {
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -49,12 +42,20 @@ export class AuthService {
 
         this.httpClient.get<{ user: IdentityUser }>(`${this.identityServerUrl}/user`, { headers: headers }).subscribe({
             next: (response) => {
+                localStorage.setItem('userDetails', JSON.stringify(response.user));
                 this.identityUser.next(response.user);
-              
             }
         });
     }
-
+    getUserDetails(): IdentityUser {
+        let userDetails = localStorage.getItem('userDetails') ?? '';
+        if(userDetails != '')
+        {
+            const user: IdentityUser = JSON.parse(userDetails);
+            return user;
+        }
+        return {} as IdentityUser;
+    }
     getToken(): string {
         let token = localStorage.getItem('token') ?? '';
         return token;
