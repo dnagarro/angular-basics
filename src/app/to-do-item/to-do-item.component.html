@@ -1,0 +1,19 @@
+<div class='table-responsive'>
+    <table class='table' *ngIf='todoItems'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let todoItem of todoItems'>
+                <td>{{ todoItem.Id }}</td>
+                <td>{{ todoItem.Name }}</td>
+                <td>{{ todoItem.Details }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <app-add-todo-item></app-add-todo-item>
+</div>

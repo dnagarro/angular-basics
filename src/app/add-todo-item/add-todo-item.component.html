@@ -1,0 +1,15 @@
+<table>
+    <tr>
+      <td><label for="Name">Name:</label></td>
+      <td><input type="text" id="Name" name="Name" [(ngModel)]="toDoItem.Name"></td>
+    </tr>
+    <tr>
+      <td><label for="Details">Details:</label></td>
+      <td><input type="text" id="Details" name="Details" [(ngModel)]="toDoItem.Details"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button (click)="submitForm()">Submit</button>
+      </td>
+    </tr>
+  </table>
