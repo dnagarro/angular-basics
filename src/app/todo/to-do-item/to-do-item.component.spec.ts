@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToDoItemComponent } from './to-do-item.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AddTodoItemComponent } from '../add-todo-item/add-todo-item.component';
+import { FormsModule } from '@angular/forms';
 
 describe('ToDoItemComponent', () => {
   let component: ToDoItemComponent;
@@ -8,7 +11,14 @@ describe('ToDoItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ToDoItemComponent]
+      imports: [
+        HttpClientTestingModule,
+        FormsModule 
+      ],
+      declarations: [
+        ToDoItemComponent,
+        AddTodoItemComponent
+      ]
     })
     .compileComponents();
     

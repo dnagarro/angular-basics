@@ -19,6 +19,15 @@ export class AddTodoItemComponent {
   constructor(private router: Router, private dataService: DataService) { }
 
   submitForm(): void {
+    if (this.toDoItem.Name == '') {
+      alert('Name is required.');
+      return;
+    }
+    if (this.toDoItem.Details == '') {
+      alert('Details is required.');
+      return;
+    }
+
     if (this.dataService.addToDo(this.toDoItem)) {
       this.router.navigate(['/items']);
     }

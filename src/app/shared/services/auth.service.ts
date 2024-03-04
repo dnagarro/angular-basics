@@ -1,18 +1,19 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { IdentityUser } from "../models/identityuser";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { Router } from "@angular/router";
+import { ResourceLoader } from "@angular/compiler";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    constructor(private router: Router, private httpClient: HttpClient, private formBuilder: FormBuilder) {
+    constructor(private httpClient: HttpClient) {
 
     }
+
     private identityServerUrl = 'https://api.realworld.io/api';
     private token = new Subject<string>();
     private identityUser = new Subject<IdentityUser>();
@@ -41,7 +42,7 @@ export class AuthService {
         return this.getToken() != '';
     }
 
-    private setUser(): void {
+    setUser(): void {
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Token ${this.getToken()}`, // Add your authorization token if needed
@@ -54,6 +55,7 @@ export class AuthService {
             }
         });
     }
+
     getUserDetails(): IdentityUser {
         let userDetails = localStorage.getItem('userDetails') ?? '';
         if (userDetails != '') {
@@ -62,6 +64,7 @@ export class AuthService {
         }
         return {} as IdentityUser;
     }
+
     getToken(): string {
         let token = localStorage.getItem('token') ?? '';
         return token;
@@ -70,12 +73,12 @@ export class AuthService {
     setToken(token: string) {
         localStorage.setItem('token', token);
         this.token.next(token);
-        this.setUser();
     }
 
     getLoginSuccessObservable() {
         return this.token.asObservable();
     }
+
     getUserDetailsSuccessObservable() {
         return this.identityUser.asObservable();
     }

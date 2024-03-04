@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+  submit(): void {
+    alert('Thank you for contacting us!');
+  }
+
 }

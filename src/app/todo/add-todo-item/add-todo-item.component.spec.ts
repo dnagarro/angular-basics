@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddTodoItemComponent } from './add-todo-item.component';
+import { FormsModule } from '@angular/forms';
 
 describe('AddTodoItemComponent', () => {
   let component: AddTodoItemComponent;
@@ -8,10 +9,11 @@ describe('AddTodoItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddTodoItemComponent]
+      declarations: [AddTodoItemComponent],
+      imports: [FormsModule]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(AddTodoItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

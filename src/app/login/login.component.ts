@@ -34,9 +34,11 @@ export class LoginComponent implements OnInit {
           next: (response) => {
             console.log('set token');
             this.authService.setToken(response.user.token);
+            this.authService.setUser();
             this.router.navigate(['/items']);
           },
           error: (err) => {
+            alert('Invalid user or password');
           }
         });
     }
