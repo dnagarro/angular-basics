@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IToDoItem } from '../shared/models/todoitem';
-import { DataService } from '../shared/services/data.service';
 import { Router } from '@angular/router';
+import { IToDoItem } from '../../shared/models/todoitem';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-add-todo-item',

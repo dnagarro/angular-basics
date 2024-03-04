@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../shared/services/data.service';
-import { IToDoItem } from '../shared/models/todoitem';
-import { AuthService } from '../shared/services/auth.service';
+import { IToDoItem } from '../../shared/models/todoitem';
+import { DataService } from '../data.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-to-do-item',

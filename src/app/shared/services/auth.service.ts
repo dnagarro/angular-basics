@@ -25,9 +25,16 @@ export class AuthService {
                 password: password,
             }
         };
-
         return this.httpClient.post<{ user: IdentityUser }>(`${this.identityServerUrl}/users/login`, data);
+    }
 
+    logout(): boolean {
+        localStorage.removeItem('userDetails');
+        localStorage.removeItem('token');
+        const user: IdentityUser = { bio: '', email: '', image: '', token: '', username: '' };
+        this.identityUser.next(user);
+        this.token.next('');
+        return true;
     }
 
     isLoggedIn(): boolean {
@@ -49,8 +56,7 @@ export class AuthService {
     }
     getUserDetails(): IdentityUser {
         let userDetails = localStorage.getItem('userDetails') ?? '';
-        if(userDetails != '')
-        {
+        if (userDetails != '') {
             const user: IdentityUser = JSON.parse(userDetails);
             return user;
         }

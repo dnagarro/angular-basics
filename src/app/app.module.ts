@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { ToDoItemComponent } from './to-do-item/to-do-item.component';
-import { AddTodoItemComponent } from './add-todo-item/add-todo-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { ToDoItemComponent } from './todo/to-do-item/to-do-item.component';
+import { AddTodoItemComponent } from './todo/add-todo-item/add-todo-item.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { LoginComponent } from './login/login.component';
     ContactComponent,
     ToDoItemComponent,
     AddTodoItemComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
