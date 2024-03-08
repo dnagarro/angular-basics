@@ -20,4 +20,10 @@ describe('ContactComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show alert on submit', () => {
+    spyOn(window, 'alert'); 
+    component.submit();
+    expect(window.alert).toHaveBeenCalledWith('Thank you for contacting us!');
+  });
 });
